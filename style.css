@@ -1377,7 +1377,7 @@ ul {
 
 .funfact-cards {
     position: relative;
-    height: 320px;
+    height: 360px;
     margin-bottom: var(--space-2xl);
 }
 
@@ -1634,14 +1634,7 @@ ul {
         width: 100%;
     }
     .funfact-cards {
-        height: auto;
-        min-height: 380px;
-    }
-    .funfact-card {
-        position: absolute; /* Keep absolute so they fade, but we need dynamic height */
-    }
-    .funfact-card.active {
-        position: relative; /* Make active card take up space */
+        height: 420px; /* Fixed sensible height to prevent jumpiness on mobile */
     }
     .funfact-nav-container {
         flex-direction: column;
