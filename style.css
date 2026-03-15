@@ -1611,3 +1611,62 @@ ul {
 .katex .minner {
     color: inherit;
 }
+
+/* ===========================
+   FUN FACTS MOBILE FIXES
+   =========================== */
+@media (max-width: 1024px) {
+    .funfact-layout {
+        grid-template-columns: 300px 1fr;
+        gap: var(--space-xl);
+    }
+}
+
+@media (max-width: 768px) {
+    .funfact-layout {
+        grid-template-columns: 1fr;
+        gap: var(--space-xl);
+    }
+    .funfact-video-col {
+        position: static;
+        max-width: 380px;
+        margin: 0 auto;
+        width: 100%;
+    }
+    .funfact-cards {
+        height: auto;
+        min-height: 380px;
+    }
+    .funfact-card {
+        position: absolute; /* Keep absolute so they fade, but we need dynamic height */
+    }
+    .funfact-card.active {
+        position: relative; /* Make active card take up space */
+    }
+    .funfact-nav-container {
+        flex-direction: column;
+        gap: var(--space-md);
+    }
+    .funfact-indicators {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .funfact-video-col {
+        max-width: 100%;
+    }
+    .funfact-card-content {
+        padding: var(--space-xl) var(--space-lg);
+    }
+    .funfact-card-content h3 {
+        font-size: 1.5rem;
+    }
+    .funfact-emoji {
+        font-size: 3rem;
+        margin-bottom: var(--space-sm);
+    }
+    .funfact-card-content p {
+        font-size: 0.95rem;
+    }
+}
