@@ -85,8 +85,6 @@ body {
     color: var(--clr-text);
     background: var(--clr-bg);
     overflow-x: hidden;
-    overflow-wrap: break-word;
-    word-break: break-word;
 }
 
 img {
@@ -243,7 +241,7 @@ ul {
     padding: 0.5rem 1rem;
     border-radius: var(--radius-full);
     font-size: 0.9rem;
-    font-weight: 500;
+    font-weight: 420;
     color: var(--clr-text-2);
     transition: all var(--transition-fast);
 }
@@ -1627,19 +1625,24 @@ ul {
         grid-template-columns: 1fr;
         gap: var(--space-xl);
     }
+
     .funfact-video-col {
         position: static;
         max-width: 380px;
         margin: 0 auto;
         width: 100%;
     }
+
     .funfact-cards {
-        height: 420px; /* Fixed sensible height to prevent jumpiness on mobile */
+        height: 500px;
+        /* Fixed sensible height to prevent jumpiness on mobile */
     }
+
     .funfact-nav-container {
         flex-direction: column;
         gap: var(--space-md);
     }
+
     .funfact-indicators {
         width: 100%;
     }
@@ -1649,16 +1652,20 @@ ul {
     .funfact-video-col {
         max-width: 100%;
     }
+
     .funfact-card-content {
         padding: var(--space-xl) var(--space-lg);
     }
+
     .funfact-card-content h3 {
         font-size: 1.5rem;
     }
+
     .funfact-emoji {
         font-size: 3rem;
         margin-bottom: var(--space-sm);
     }
+
     .funfact-card-content p {
         font-size: 0.95rem;
     }
