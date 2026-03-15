@@ -1554,6 +1554,11 @@ ul {
     animation: none;
 }
 
+@keyframes fillIndicator {
+    from { width: 0%; }
+    to { width: 100%; }
+}
+
 .funfact-controls {
     display: flex;
     align-items: center;
