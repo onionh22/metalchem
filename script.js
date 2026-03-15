@@ -4,7 +4,6 @@
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // ---- KaTeX Auto-Render ----
     if (window.renderMathInElement) {
         renderMathInElement(document.body, {
             delimiters: [
