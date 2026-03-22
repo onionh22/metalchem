@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 'Tăng độ tinh khiết của Al',
                 'Bảo vệ nhôm lỏng và hạ nhiệt độ nóng chảy',
                 'Tạo chất khử mạnh hơn',
-                'Ngăn Al bị oxi hoá',
+                'Tăng nhiệt độ nóng chảy',
             ],
             answer: 1,
             explain: 'Cryolite giúp hạ nhiệt độ nóng chảy của \\(Al_2O_3\\) từ ~2050°C xuống ~960°C, đồng thời bảo vệ nhôm lỏng không bị oxi hoá thành \\(Al_2O_3\\).'
