@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 '\\(2NaCl \\xrightarrow{đpnc} 2Na + Cl_2\\)',
             ],
             answer: 1,
-            explain: 'Phản ứng nhiệt nhôm dùng Al làm chất khử để khử oxit kim loại ở nhiệt độ cao.'
+            explain: 'Phản ứng nhiệt nhôm dùng Al làm chất khử để khử oxide kim loại ở nhiệt độ cao.'
         },
         {
             q: 'Cryolite \\(Na_3AlF_6\\) được thêm vào khi điện phân nóng chảy \\(Al_2O_3\\) nhằm mục đích gì?',
