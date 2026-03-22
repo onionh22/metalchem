@@ -73,10 +73,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 'Nung nóng hợp chất kim loại',
             ],
             answer: 1,
-            explain: 'Nguyên tắc chung: khử ion kim loại (M^n+) thành kim loại tự do (M) bằng cách cung cấp electron.'
+            explain: 'Nguyên tắc chung: khử ion kim loại \\(M^{n+}\\) thành kim loại tự do \\(M\\) bằng cách cung cấp electron.'
         },
         {
-            q: 'Phương pháp nào là duy nhất để tách kim loại kiềm (Na, K)?',
+            q: 'Phương pháp phổ biến để tách các kim loại: Na, Mg, Ca, Al,… là?',
             options: [
                 'Nhiệt luyện',
                 'Thuỷ luyện',
@@ -84,33 +84,33 @@ document.addEventListener('DOMContentLoaded', () => {
                 'Điện phân dung dịch',
             ],
             answer: 2,
-            explain: 'Kim loại kiềm có tính khử rất mạnh, chỉ có thể dùng dòng điện để khử ion trong muối nóng chảy.'
+            explain: 'Các kim loại trên có tính khử rất mạnh, chỉ có thể dùng dòng điện để khử ion trong muối nóng chảy.'
         },
         {
             q: 'Trong phương pháp nhiệt luyện, chất nào KHÔNG được dùng làm chất khử?',
-            options: ['C (carbon)', 'CO', 'Na', 'H₂'],
+            options: ['C (carbon)', 'CO', 'Au', '\\(H_2\\)'],
             answer: 2,
-            explain: 'Na là kim loại kiềm, rất hoạt động — không dùng làm chất khử trong nhiệt luyện thông thường. Người ta dùng C, CO, H₂, Al.'
+            explain: 'Vàng (Au) không được dùng làm chất khử vì nó có tính khử rất yếu.'
         },
         {
             q: 'Tái chế nhôm tiết kiệm bao nhiêu phần trăm năng lượng so với sản xuất từ quặng?',
             options: ['50%', '75%', '85%', '95%'],
             answer: 3,
-            explain: 'Tái chế nhôm tiết kiệm đến 95% năng lượng so với điện phân nóng chảy Al₂O₃ từ quặng bauxite.'
+            explain: 'Tái chế nhôm tiết kiệm đến 95% năng lượng so với điện phân nóng chảy \\(Al_2O_3\\) từ quặng bauxite.'
         },
         {
             q: 'Phản ứng nào sau đây là phản ứng nhiệt nhôm?',
             options: [
-                'Fe₂O₃ + 3CO → 2Fe + 3CO₂',
-                'Fe₂O₃ + 2Al → 2Fe + Al₂O₃',
-                'CuSO₄ + Fe → FeSO₄ + Cu',
-                '2NaCl → 2Na + Cl₂',
+                '\\(Fe_2O_3 + 3CO \\xrightarrow{t°} 2Fe + 3CO_2\\)',
+                '\\(Fe_2O_3 + 2Al \\xrightarrow{t°} 2Fe + Al_2O_3\\)',
+                '\\(CuSO_4 + Fe \\rightarrow FeSO_4 + Cu\\)',
+                '\\(2NaCl \\xrightarrow{đpnc} 2Na + Cl_2\\)',
             ],
             answer: 1,
             explain: 'Phản ứng nhiệt nhôm dùng Al làm chất khử để khử oxit kim loại ở nhiệt độ cao.'
         },
         {
-            q: 'Cryolite (Na₃AlF₆) được thêm vào khi điện phân nóng chảy Al₂O₃ nhằm mục đích gì?',
+            q: 'Cryolite \\(Na_3AlF_6\\) được thêm vào khi điện phân nóng chảy \\(Al_2O_3\\) nhằm mục đích gì?',
             options: [
                 'Tăng độ tinh khiết của Al',
                 'Tăng tính dẫn điện và hạ nhiệt độ nóng chảy',
@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 'Ngăn Al bị oxi hoá',
             ],
             answer: 1,
-            explain: 'Cryolite giúp hạ nhiệt độ nóng chảy của Al₂O₃ từ ~2050°C xuống ~960°C, đồng thời tăng tính dẫn điện.'
+            explain: 'Cryolite giúp hạ nhiệt độ nóng chảy của \\(Al_2O_3\\) từ ~2050°C xuống ~960°C, đồng thời bảo vệ nhôm lỏng không bị oxi hoá thành \\(Al_2O_3\\).'
         },
     ];
 
@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
         answered = false;
         const q = quizData[currentQ];
         progressBar.style.width = ((currentQ) / quizData.length * 100) + '%';
-        questionEl.textContent = `Câu ${currentQ + 1}/${quizData.length}: ${q.q}`;
+        questionEl.innerHTML = `Câu ${currentQ + 1}/${quizData.length}: ${q.q}`;
         optionsEl.innerHTML = '';
         feedbackEl.className = 'quiz-feedback';
         feedbackEl.textContent = '';
@@ -178,10 +178,21 @@ document.addEventListener('DOMContentLoaded', () => {
         q.options.forEach((opt, i) => {
             const btn = document.createElement('button');
             btn.className = 'quiz-option';
-            btn.textContent = opt;
+            btn.innerHTML = opt;
             btn.addEventListener('click', () => selectAnswer(i, btn));
             optionsEl.appendChild(btn);
         });
+
+        // Re-render KaTeX for dynamically created elements (question + options)
+        if (window.renderMathInElement) {
+            renderMathInElement(document.getElementById('quizContainer'), {
+                delimiters: [
+                    { left: '\\(', right: '\\)', display: false },
+                    { left: '\\[', right: '\\]', display: true },
+                ],
+                throwOnError: false,
+            });
+        }
     }
 
     function selectAnswer(index, btn) {
@@ -195,19 +206,43 @@ document.addEventListener('DOMContentLoaded', () => {
         if (index === q.answer) {
             btn.classList.add('correct');
             feedbackEl.className = 'quiz-feedback show correct-fb';
-            feedbackEl.textContent = '✓ Chính xác! ' + q.explain;
+            feedbackEl.innerHTML = '✓ Chính xác! ' + q.explain;
             score++;
         } else {
             btn.classList.add('wrong');
             allBtns[q.answer].classList.add('correct');
             feedbackEl.className = 'quiz-feedback show wrong-fb';
-            feedbackEl.textContent = '✗ Sai rồi! ' + q.explain;
+            feedbackEl.innerHTML = '✗ Sai rồi! ' + q.explain;
+        }
+
+        // Re-render KaTeX in feedback
+        if (window.renderMathInElement) {
+            renderMathInElement(feedbackEl, {
+                delimiters: [
+                    { left: '\\(', right: '\\)', display: false },
+                    { left: '\\[', right: '\\]', display: true },
+                ],
+                throwOnError: false,
+            });
         }
 
         if (currentQ < quizData.length - 1) {
+            nextBtn.textContent = '';
+            const icon = document.createElement('span');
+            icon.className = 'material-symbols-outlined';
+            icon.textContent = 'arrow_forward';
+            nextBtn.appendChild(icon);
+            nextBtn.appendChild(document.createTextNode(' Câu tiếp theo'));
             nextBtn.style.display = 'inline-flex';
         } else {
-            setTimeout(showResult, 800);
+            // Last question: show "Kết quả" button instead of auto-transitioning
+            nextBtn.textContent = '';
+            const icon = document.createElement('span');
+            icon.className = 'material-symbols-outlined';
+            icon.textContent = 'emoji_events';
+            nextBtn.appendChild(icon);
+            nextBtn.appendChild(document.createTextNode(' Kết quả'));
+            nextBtn.style.display = 'inline-flex';
         }
     }
 
@@ -233,8 +268,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     nextBtn.addEventListener('click', () => {
-        currentQ++;
-        renderQuestion();
+        if (currentQ >= quizData.length - 1) {
+            // Last question answered, show result
+            showResult();
+        } else {
+            currentQ++;
+            renderQuestion();
+        }
     });
 
     restartBtn.addEventListener('click', () => {
