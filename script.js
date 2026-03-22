@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
             q: 'Cryolite \\(Na_3AlF_6\\) được thêm vào khi điện phân nóng chảy \\(Al_2O_3\\) nhằm mục đích gì?',
             options: [
                 'Tăng độ tinh khiết của Al',
-                'Tăng tính dẫn điện và hạ nhiệt độ nóng chảy',
+                'Bảo vệ nhôm lỏng và hạ nhiệt độ nóng chảy',
                 'Tạo chất khử mạnh hơn',
                 'Ngăn Al bị oxi hoá',
             ],
